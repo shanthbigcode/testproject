@@ -1,0 +1,24 @@
+Drag and drop AppsflyerAnalyticsHandler.cs in first scene on any dontdestroyonload gameobjects
+
+Add below lines in your manifest
+
+<!-- Apps flyer -->
+    <activity android:name="com.appsflyer.GetDeepLinkingActivity" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="your_scheme" />
+      </intent-filter>
+    </activity>
+    <receiver android:name="com.appsflyer.MultipleInstallBroadcastReceiver" android:exported="true">
+      <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+      </intent-filter>
+    </receiver>
+    <receiver android:name="com.google.android.gms.gcm.GcmReceiver" android:exported="true">
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+      </intent-filter>
+    </receiver>
+    <!-- End Apps flyer-->
